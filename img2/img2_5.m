@@ -20,3 +20,5 @@ imgOut=imgOut*255;
 imshow(imgOut);
 figure;
 imshow(img);
+figure;
+imshow(img2);

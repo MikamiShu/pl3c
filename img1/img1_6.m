@@ -13,4 +13,11 @@ Y=abs(ari_g16-nasi_g16);
 
 Y=uint8(Y);
 
+bin1=Y>110;
+bin1=uint8(bin1);
+figure;
+imshow(bin1,[0 1]);
+title('閾値128');
+
+figure;
 imshow(Y);
