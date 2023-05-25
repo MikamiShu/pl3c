@@ -1,0 +1,22 @@
+.center{
+    width: 800px;
+    margin: auto;
+}
+table{
+    text-align: center;
+}
+
+.kiso{
+    background-color: #55bb55;
+}
+.hatten{
+    background-color:#ff9900;
+}
+.ryouiki{
+    background-color: #66aaaa;
+}
+p1{
+    color:#ff0000;
+    font-weight: bold;
+    text-decoration: underline;
+}
