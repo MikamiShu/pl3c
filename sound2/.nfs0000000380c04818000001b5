@@ -1,0 +1,18 @@
+clear;
+
+Fs=8192;
+f=440;
+t=[0:Fs-1]/Fs;
+y=sin(2*pi*f*t);
+
+y=y(1,1:1024);
+
+y_fft=fft(y);
+y_fs=fftshift(y_fft);
+y_fs=abs(y_fs);
+
+s=[-Fs/2:Fs/1024:Fs/2-1];%横軸
+
+plot(s,y_fs);
+axis([-1000 1000 0 600]);
+

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JavaScript test</title>
+    <link rel="stylesheet" href="html1_1.css" id="test">
+</head>
+
+<body>
+    <p>
+        <script type="text/javascript">
+
+           var date = new Date();
+           var sec = date.getSeconds();
+           var elem = document.getElementById("test");
+
+           if(0 <= sec && sec <20){
+            elem.href="firefox_styles.css";
+           } else if(20 <= sec && sec <40){
+            elem.href="chrome_styles.css";
+           } else if(40 <= sec && sec <=59){
+            elem.href="default_styles.css";
+           }
+
+        </script>
+    </p>
+</body>
+
+</html>

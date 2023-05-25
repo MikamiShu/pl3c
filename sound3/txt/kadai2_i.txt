@@ -1,0 +1,31 @@
+%やってることはkadai2_aを参照
+
+clear;
+
+[y,Fs] = audioread('sound2.wav');
+
+N = length(y);
+t = [1:N]/Fs;
+
+h=height(y);
+w=width(y);
+fac=h*w;
+
+z = zeros(size(y));
+for k=1:fac;
+    z(k) = y(k)*(-1);
+end
+
+
+subplot(2,1,1);
+plot(t,y);
+xlabel('time[s]');
+ylabel('waveform');
+title('「い」の波形から1部抜粋');
+axis([0 0.01 -0.04 0.04]);
+subplot(2,1,2);
+plot(t,z);
+xlabel('time[s]');
+ylabel('waveform');
+title('上下逆転波形');
+axis([0 0.01 -0.04 0.04]);
