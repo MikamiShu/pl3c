@@ -17,7 +17,7 @@ bin1=Y>110;
 bin1=uint8(bin1);
 figure;
 imshow(bin1,[0 1]);
-title('閾値128');
+title('閾値110');
 
 figure;
 imshow(Y);
