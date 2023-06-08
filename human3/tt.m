@@ -1,0 +1,61 @@
+clear;
+close all;
+
+d=importdata('data.csv',',',3);
+data=d.data;
+data(:,1)=[];
+
+[people,setnum]=size(data);
+setsize=[4,8,16];
+x=setsize;
+slope=zeros(people,3);
+
+for k=1:people
+    y=data(k,1:3);
+    p_circle=polyfit(x,y,1);
+    slope(k,1)=p_circle(1);
+    
+    y=data(k,7:9);
+    p_circle_bar=polyfit(x,y,1);
+    slope(k,2)=p_circle_bar(1);
+    slope(k,3)=p_circle(1) - p_circle_bar(1);
+end
+
+mynum=1;
+
+hold on;
+y=data(mynum, 1:3);
+plot(x,y,'o');
+p_circle=polyfit(x,y,1);
+a=p_circle(:,1);
+b=p_circle(:,2);
+y1=a*x+b;
+
+y=data(mynum, 7:9);
+plot(x,y,'x');
+p_circle_bar=polyfit(x,y,1);
+a=p_circle_bar(:,1);
+b=p_circle_bar(:,2);
+y2=a*x+b;
+plot(x, y1, x, y2);
+hold off;
+
+xlim([0, 20]);
+xlabel("セットサイズ");
+ylabel("探査k時間[ms]");
+legend("目標刺激:円のデータ点","目標刺激:円+棒のデータ点","目標刺激:円の回帰直線","目標刺激:円+棒の回帰直線",'Location','northwest');
+legend('boxoff');
+
+ave=mean(slope(:,3));
+var=var(slope(:,3));
+std=std(slope(:,3));
+err=std/sqrt(people);
+
+t=ave/err;
+probability=(1-tcdf(t,people-1))*2;
+[ttest_result_h, ttest_result_p]=ttest(slope(:,1),slope(:,2));
+
+t
+probability
+ttest_result_h
+ttest_result_p
